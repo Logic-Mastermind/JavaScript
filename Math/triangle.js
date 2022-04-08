@@ -8,7 +8,7 @@
  * @class Triangle
  * Class that represents a triangle.
  */
-class Triangle {
+export default class Triangle {
   sides;
    
   /**
@@ -36,13 +36,14 @@ class Triangle {
           num2 = placeholder;
         }
         
-        return Math.sqrt(num1 - num2);
+        this.sides.push(Math.sqrt(num1 - num2));
+        return this;
       } else {
-       operand += side.length ** 2;
+        operand += side.length ** 2;
       }
     }
     
-    this.sides.push(Math.sqrt(operand));
+    this.sides.push({ length: Math.sqrt(operand), hypotenuse: !hasHyp });
     return this;
   }
 }

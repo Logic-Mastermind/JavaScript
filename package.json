@@ -1,0 +1,19 @@
+{
+  "name": "javascript",
+  "version": "0.1",
+  "main": "main.js",
+  "type": "module",
+  "scripts": {
+    "test": "node ./main.js"
+  },
+  "keywords": [],
+  "author": "Logic-Mastermind",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Logic-Mastermind/JavaScript.git"
+  },
+  "dependencies": {
+    "typescript": "^4.6.3"
+  }
+}

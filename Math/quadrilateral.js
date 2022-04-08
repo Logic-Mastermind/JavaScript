@@ -4,7 +4,7 @@
  * @property {number} axisY
  * @property {number} axisZ
  */
-  
+
 /**
  * @typedef Vector
  * @property {string} face - The face the force originates from.
@@ -15,7 +15,7 @@
  * @class Quadrilateral
  * Class representing a quadrilateral
  */
-class Quadrilateral {
+export default class Quadrilateral {
   dimensions;
   vectors;
    
@@ -54,26 +54,25 @@ class Quadrilateral {
       
       for (const [i, v] of normal.entries()) {
         vectors.normal += v.magnitude;
-        this.vectors.splice(i, 1);
+        this.vectors.splice(this.vectors.indexOf(v), 1);
         calculated.push(i);
       }
       
       for (const [i, v] of opposite.entries()) {
         vectors.opposite += v.magnitude;
-        console.log(i)
-        this.vectors.splice(i, 1);
+        this.vectors.splice(this.vectors.indexOf(v), 1);
         calculated.push(i);
       }
       
       if (opposite) {
-        if (vectors.normal > vectors.opposite) result = { magnitude: vectors.normal - vectors.opposite, face: vector.face }
-        else if (vectors.normal == vectors.opposite) result = {}
-        else result = { magnitude: vectors.opposite - vectors.opposite, face: opposite[0].face }
+        if (vectors.normal > vectors.opposite) result = { magnitude: vectors.normal - vectors.opposite, face: vector.face };
+        else if (vectors.opposite > vectors.normal) result = { magnitude: vectors.opposite - vectors.normal, face: opposite[0].face };
+        else result = { magnitude: 0, face: null };
         
         this.vectors.push(result);
       }
-      
-      return this;
     }
+
+    return this;
   }
 }
